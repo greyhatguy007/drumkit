@@ -4,6 +4,7 @@ for (const button of document.querySelectorAll(".drum")) {
     button.addEventListener("click", () => {
         l = button.innerHTML;
         playSound(l)
+        buttonAnimation(l)
     })
 }
 
@@ -11,6 +12,7 @@ for (const button of document.querySelectorAll(".drum")) {
 
 document.addEventListener("keydown", function(event) {
     playSound(event.key);
+    buttonAnimation(event.key);
 })
 
 function playSound(l) {
@@ -39,4 +41,13 @@ function playSound(l) {
         default:
             break;
     }
+}
+
+function buttonAnimation(x) {
+    var currentButton = document.querySelector("." + x);
+    currentButton.classList.add("pressed");
+    setTimeout(() => {
+        currentButton.classList.remove("pressed");
+    }, 250);
+
 }
